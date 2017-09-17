@@ -1,0 +1,24 @@
+{
+  "name": "skilltree-js-test-homework20170917",
+  "version": "1.0.0",
+  "description": "Anny's homework",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha tests/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Annilla/skilltree-js-test-homework20170917.git"
+  },
+  "author": "Anny Chang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Annilla/skilltree-js-test-homework20170917/issues"
+  },
+  "homepage": "https://github.com/Annilla/skilltree-js-test-homework20170917#readme",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^3.5.3",
+    "sinon": "^3.2.1"
+  }
+}
