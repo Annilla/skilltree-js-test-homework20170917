@@ -36,7 +36,7 @@ ShoppingCart.prototype.checkMOQ = function (quantity, moq){
     if (moq <= quantity) {
         return true;
     }
-    return true;
+    return false;
 };
 
 module.exports = ShoppingCart;
