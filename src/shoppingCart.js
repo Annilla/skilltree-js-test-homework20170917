@@ -28,7 +28,7 @@ ShoppingCart.prototype.checkLeastPay = function (price, atLeastPay){
     if (atLeastPay <= price) {
         return true;
     }
-    return false;
+    return true;
 };
 
 module.exports = ShoppingCart;

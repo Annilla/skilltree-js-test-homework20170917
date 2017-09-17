@@ -60,5 +60,17 @@ describe('ShoppingCart', () => {
             // Assert
             actual.should.be.true;
         });
+        it('沒滿額', () => {
+            // Arrange
+            let price = 499;
+            let atLeastPay = 500;
+            let expected = true;
+        
+            // Act
+            let actual = shoppingCart.checkLeastPay(price, atLeastPay);
+        
+            // Assert
+            actual.should.be.false;
+        });
     });
 });
