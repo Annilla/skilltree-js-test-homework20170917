@@ -101,4 +101,20 @@ describe('ShoppingCart', () => {
             });
         });
     });
+
+    // 折扣計算
+    describe('#discountPay(price, rate)', () => {
+        it('折扣計算', () => {
+            // Arrange
+            let price = 500;
+            let rate = 0.8;
+            let expected = 400;
+        
+            // Act
+            let actual = shoppingCart.discountPay(price, rate);
+        
+            // Assert
+            actual.should.equal(expected);
+        });
+    });
 });

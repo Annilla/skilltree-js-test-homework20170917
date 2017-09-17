@@ -39,4 +39,9 @@ ShoppingCart.prototype.checkMOQ = function (quantity, moq){
     return false;
 };
 
+// 折扣計算
+ShoppingCart.prototype.discountPay = function (price, rate){
+    return 0;
+};
+
 module.exports = ShoppingCart;
