@@ -88,5 +88,17 @@ describe('ShoppingCart', () => {
             // Assert
             actual.should.be.true;
         });
+        it('未達最低商品數', () => {
+            // Arrange
+            let quantity = 2;
+            let moq = 3;
+            let expected = false;
+        
+            // Act
+            let actual = shoppingCart.checkMOQ(quantity, moq);
+        
+            // Assert
+            actual.should.be.false;
+        });
     });
 });
