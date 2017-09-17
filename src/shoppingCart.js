@@ -25,6 +25,9 @@ ShoppingCart.prototype.getLevelConfig = function (level) {
 
 // 是否滿額
 ShoppingCart.prototype.checkLeastPay = function (price, atLeastPay){
+    if (atLeastPay <= price) {
+        return true;
+    }
     return false;
 };
 
