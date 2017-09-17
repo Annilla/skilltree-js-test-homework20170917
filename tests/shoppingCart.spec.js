@@ -76,29 +76,29 @@ describe('ShoppingCart', () => {
 
     // 是否達到最低商品數
     describe('#checkMOQ(quantity, moq)', () => {
-        it('達到最低商品數', () => {
-            // Arrange
-            let quantity = 3;
-            let moq = 3;
-            let expected = true;
-        
-            // Act
-            let actual = shoppingCart.checkMOQ(quantity, moq);
-        
-            // Assert
-            actual.should.be.true;
-        });
-        it('未達最低商品數', () => {
-            // Arrange
-            let quantity = 2;
-            let moq = 3;
-            let expected = false;
-        
-            // Act
-            let actual = shoppingCart.checkMOQ(quantity, moq);
-        
-            // Assert
-            actual.should.be.false;
+        let dataSets = [
+            {
+                case: '達到最低商品數',
+                quantity: 3,
+                moq: 3,
+                expected: true
+            },
+            {
+                case: '未達最低商品數',
+                quantity: 2,
+                moq: 3,
+                expected: false
+            }
+        ];
+
+        dataSets.forEach((data) => {
+            it(`${data.case}`, () => {
+                // Act
+                let actual = shoppingCart.checkLeastPay(data.quantity, data.moq);
+                
+                // Assert
+                actual.should.equal(data.expected);
+            });
         });
     });
 });
