@@ -120,18 +120,25 @@ describe('ShoppingCart', () => {
 
     // 購物車結算
     describe('#finalTotal(level, quantity, price)', () => {
-        it('如果是 VIP 會員，只要購物滿 500 元，就一律有 8 折優惠', () => {
-            // Arrange
-            let level = 'VIP';
-            let quantity = 3;
-            let price = 500;
-            let expected = 400;
-        
-            // Act
-            let actual = shoppingCart.finalTotal(level, quantity, price);
-        
-            // Assert
-            actual.should.equal(expected);
+
+        let dataSets = [
+            {
+                case: 'VIP 會員，購物滿 500 元， 8 折優惠',
+                level: 'VIP',
+                quantity: 3,
+                price: 500,
+                expected: 400
+            }
+        ];
+
+        dataSets.forEach((data) => {
+            it(`${data.case}`, () => {
+                // Act
+                let actual = shoppingCart.finalTotal(data.level, data.quantity, data.price);
+                
+                // Assert
+                actual.should.equal(data.expected);
+            });
         });
     });
 });
