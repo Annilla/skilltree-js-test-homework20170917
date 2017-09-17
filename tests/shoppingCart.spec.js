@@ -73,4 +73,20 @@ describe('ShoppingCart', () => {
             });
         });
     });
+
+    // 是否達到最低商品數
+    describe('#checkMOQ(quantity, moq)', () => {
+        it('達到最低商品數', () => {
+            // Arrange
+            let quantity = 3;
+            let moq = 3;
+            let expected = true;
+        
+            // Act
+            let actual = shoppingCart.checkMOQ(quantity, moq);
+        
+            // Assert
+            actual.should.be.true;
+        });
+    });
 });

@@ -31,4 +31,9 @@ ShoppingCart.prototype.checkLeastPay = function (price, atLeastPay){
     return false;
 };
 
+// 是否達到最低商品數
+ShoppingCart.prototype.checkMOQ = function (quantity, moq){
+    return false;
+};
+
 module.exports = ShoppingCart;
