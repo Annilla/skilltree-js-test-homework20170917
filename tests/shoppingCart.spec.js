@@ -48,29 +48,29 @@ describe('ShoppingCart', () => {
 
     // 是否滿額
     describe('#checkLeastPay(price, atLeastPay)', () => {
-        it('滿額', () => {
-            // Arrange
-            let price = 500;
-            let atLeastPay = 500;
-            let expected = true;
-        
-            // Act
-            let actual = shoppingCart.checkLeastPay(price, atLeastPay);
-        
-            // Assert
-            actual.should.be.true;
-        });
-        it('沒滿額', () => {
-            // Arrange
-            let price = 499;
-            let atLeastPay = 500;
-            let expected = true;
-        
-            // Act
-            let actual = shoppingCart.checkLeastPay(price, atLeastPay);
-        
-            // Assert
-            actual.should.be.false;
+        let dataSets = [
+            {
+                case: '滿額',
+                price: 500,
+                atLeastPay: 500,
+                expected: true
+            },
+            {
+                case: '沒滿額',
+                price: 499,
+                atLeastPay: 500,
+                expected: false
+            }
+        ];
+
+        dataSets.forEach((data) => {
+            it(`${data.case}`, () => {
+                // Act
+                let actual = shoppingCart.checkLeastPay(data.price, data.atLeastPay);
+                
+                // Assert
+                actual.should.equal(data.expected);
+            });
         });
     });
 });
