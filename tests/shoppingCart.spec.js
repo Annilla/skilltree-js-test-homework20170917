@@ -16,37 +16,33 @@ describe('ShoppingCart', () => {
             shoppingCart = new ShoppingCart();
         });
 
-        it('取得 Normal 設定值', () => {
-            // Arrange
-            let level = 'Normal';
-            let expected = {
-                atLeastPay: 1000,
-                moq: 3,
-                discount: 0.85
-            };
+        let dataSets = [
+            {
+                level: 'Normal',
+                expected: {
+                    atLeastPay: 1000,
+                    moq: 3,
+                    discount: 0.85
+                }
+            },
+            {
+                level: 'VIP',
+                expected: {
+                    atLeastPay: 500,
+                    moq: 0,
+                    discount: 0.8
+                }
+            }
+        ];
 
-            // Act
-            let actual = shoppingCart.getLevelConfig(level);
-            
-            // Assert
-            actual.should.deep.equal(expected);
+        dataSets.forEach((data) => {
+            it(`取得 ${data.level} 設定值`, () => {
+                // Act
+                let actual = shoppingCart.getLevelConfig(data.level);
+                
+                // Assert
+                actual.should.deep.equal(data.expected);
+            });
         });
-
-        it('取得 VIP 設定值', () => {
-            // Arrange
-            let level = 'VIP';
-            let expected = {
-                atLeastPay: 500,
-                moq: 0,
-                discount: 0.8
-            };
-
-            // Act
-            let actual = shoppingCart.getLevelConfig(level);
-            
-            // Assert
-            actual.should.deep.equal(expected);
-        });
-
     });
 });
