@@ -128,6 +128,41 @@ describe('ShoppingCart', () => {
                 quantity: 3,
                 price: 500,
                 expected: 400
+            },
+            {
+                case: 'VIP 會員，購物未滿 500 元',
+                level: 'VIP',
+                quantity: 3,
+                price: 499,
+                expected: 499
+            },
+            {
+                case: '一般會員，購物滿 1000 元，購買超過 3 件商品， 85 折優惠',
+                level: 'Normal',
+                quantity: 3,
+                price: 1000,
+                expected: 850
+            },
+            {
+                case: '一般會員，購物未滿 1000 元，購買超過 3 件商品',
+                level: 'Normal',
+                quantity: 3,
+                price: 999,
+                expected: 999
+            },
+            {
+                case: '一般會員，購物滿 1000 元，購買沒超過 3 件商品',
+                level: 'Normal',
+                quantity: 2,
+                price: 1000,
+                expected: 1000
+            },
+            {
+                case: '一般會員，購物未滿 1000 元，購買沒超過 3 件商品',
+                level: 'Normal',
+                quantity: 2,
+                price: 999,
+                expected: 999
             }
         ];
 
