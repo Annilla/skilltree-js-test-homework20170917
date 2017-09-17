@@ -46,6 +46,21 @@ ShoppingCart.prototype.discountPay = function (price, rate){
 
 // 購物車結算
 ShoppingCart.prototype.finalTotal = function (level, quantity, price){
+
+    // 取得條件參數設定
+    let config = this.getLevelConfig(level);
+
+    // 是否滿額
+    let checkPay = this.checkLeastPay(price, config.atLeastPay)
+
+    // 是否達到最低商品數
+    let checkQuantity = this.checkMOQ(quantity, config.moq);
+    
+    // 折扣計算
+    if (checkPay && checkQuantity) {
+        return this.discountPay(price, config.rate);
+    }
+
     return price;
 };
 
