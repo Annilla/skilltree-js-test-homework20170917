@@ -7,15 +7,15 @@ let ShoppingCart = require('../src/shoppingCart');
 chai.should();
 
 describe('ShoppingCart', () => {
+
+    // 每次測試前重新 new ShoppingCart()
+    let shoppingCart;
+    beforeEach(() => {
+        shoppingCart = new ShoppingCart();
+    });
+    
     // 取得條件參數設定
     describe('#getLevelConfig(level)', () => {
-
-        // 每次測試前重新 new ShoppingCart()
-        let shoppingCart;
-        beforeEach(() => {
-            shoppingCart = new ShoppingCart();
-        });
-
         let dataSets = [
             {
                 level: 'Normal',
@@ -43,6 +43,22 @@ describe('ShoppingCart', () => {
                 // Assert
                 actual.should.deep.equal(data.expected);
             });
+        });
+    });
+
+    // 是否滿額
+    describe('#checkLeastPay(price, atLeastPay)', () => {
+        it('滿額', () => {
+            // Arrange
+            let price = 500;
+            let atLeastPay = 500;
+            let expected = true;
+        
+            // Act
+            let actual = shoppingCart.checkLeastPay(price, atLeastPay);
+        
+            // Assert
+            actual.should.be.true;
         });
     });
 });
