@@ -9,14 +9,14 @@ ShoppingCart.prototype.getLevelConfig = function (level) {
             config = {
                 atLeastPay: 500,
                 moq: 0,
-                discount: 0.8
+                rate: 0.8
             };
             break;
         default:
             config = {
                 atLeastPay: 1000,
                 moq: 3,
-                discount: 0.85
+                rate: 0.85
             };
     }
 
@@ -42,6 +42,11 @@ ShoppingCart.prototype.checkMOQ = function (quantity, moq){
 // 折扣計算
 ShoppingCart.prototype.discountPay = function (price, rate){
     return price * rate;
+};
+
+// 購物車結算
+ShoppingCart.prototype.finalTotal = function (level, quantity, price){
+    return price;
 };
 
 module.exports = ShoppingCart;

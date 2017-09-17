@@ -22,7 +22,7 @@ describe('ShoppingCart', () => {
                 expected: {
                     atLeastPay: 1000,
                     moq: 3,
-                    discount: 0.85
+                    rate: 0.85
                 }
             },
             {
@@ -30,7 +30,7 @@ describe('ShoppingCart', () => {
                 expected: {
                     atLeastPay: 500,
                     moq: 0,
-                    discount: 0.8
+                    rate: 0.8
                 }
             }
         ];
@@ -112,6 +112,23 @@ describe('ShoppingCart', () => {
         
             // Act
             let actual = shoppingCart.discountPay(price, rate);
+        
+            // Assert
+            actual.should.equal(expected);
+        });
+    });
+
+    // 購物車結算
+    describe('#finalTotal(level, quantity, price)', () => {
+        it('如果是 VIP 會員，只要購物滿 500 元，就一律有 8 折優惠', () => {
+            // Arrange
+            let level = 'VIP';
+            let quantity = 3;
+            let price = 500;
+            let expected = 400;
+        
+            // Act
+            let actual = shoppingCart.finalTotal(level, quantity, price);
         
             // Assert
             actual.should.equal(expected);
